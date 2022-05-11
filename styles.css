@@ -1,0 +1,408 @@
+/* || Universal reset */
+@import "reset.css";
+
+/* || Basic styling */
+
+html {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 18px;
+}
+
+body {
+    background-color: rgb(36, 17, 111);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 2rem 0;
+}
+
+em {
+    font-weight: bold;
+}
+
+address {
+    margin-top: 1rem;
+}
+
+p {
+    line-height: 1.5;
+}
+
+article p {
+    margin-top: 1rem;
+    text-align: justify;
+}
+
+li {
+    line-height: 1.5
+}
+
+article {
+    padding: 2rem 1rem;
+    background-color: white;
+}
+
+@media (min-width: 50rem) {
+    article {
+        margin: 0 2rem;
+    }
+}
+
+footer {
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: rgb(43, 113, 61);
+    color: white;
+}
+
+/* || Navigation bar */
+
+nav {
+    background-color: black;
+    color: white;
+}
+
+nav > ul {
+    display: flex;
+    height: 2.5rem;
+    transition: height 0.5s;
+}
+
+nav > ul > li {
+    text-align: center;
+    flex: 0 150px;
+    line-height: 2.5rem;
+}
+
+nav >ul > li:hover {
+    background-color: gray;
+}
+
+#nav_expand {
+    display: none;
+}
+
+/* (add expand option to navigation bar) */
+@media (max-width: 600px) {
+    nav > ul {
+        justify-content: space-between;
+    }
+    nav > ul > li:not(:first-child) {
+        display: none;
+    }
+    #nav_expand {
+        display: block;
+    }
+    .expanded ul {
+        flex-direction: column;
+        position: relative;
+        height: 10rem;
+    }
+    .expanded #nav_expand {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        padding-left: 0;
+        text-align: center;
+    }
+    nav.expanded > ul > li {
+        display: block;
+        flex: 0;
+        padding-left: 65px;
+        text-align: left;
+    }
+}
+
+
+/* || Hyperlinks */
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+footer a {
+    color: black;
+}
+
+a:hover {
+    color: red;
+}
+
+/* || Index page */
+
+.profile {
+    padding: 1rem;
+    border: 1.5px dashed black;
+}
+
+.profile > p:first-of-type {
+    margin-top: 0;
+}
+
+/* || Hobbies list */
+
+.hobbies_list > div {
+    margin: 4rem 2rem;
+    border: 5px inset gray;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hobbies_list > div:first-child {
+    margin-top: 3rem;
+}
+
+.hobbies_picture_container {
+    flex: 1;
+    max-width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: AliceBlue;
+}
+
+.hobbies_list_content {
+    flex: 2;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.hobbies_list_content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hobbies_list_content p {
+    margin-top: 2rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+
+/* || Achievements flip card */
+
+.achiev_grid {
+    margin: 3rem 0;
+    padding: 0 5vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 80px;
+}
+
+@media (max-width: 700px) {
+    .achiev_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.flip_card {
+    padding-bottom: 110%;
+    border: 3px solid DarkSlateGray;
+    box-shadow: 10px 15px 20px 5px black;
+    perspective: 800px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: transform 1s;
+}
+
+.flip_card:hover {
+    cursor: pointer;
+}
+
+.flipped {
+    transform: translateX(-100%) rotateY(180deg);
+}
+
+.flip_card_front, .flip_card_back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.flip_card_front {
+    background: gray;
+}
+
+.flip_card_back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+
+.achiev_title {
+    min-height: 2.5rem;
+    padding: 1rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.flip_card_back span {
+    position: relative;
+}
+
+.gold:before, .silver:before, .bronze:before, .honor:before, .seal:before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.5rem;
+    background-size: 1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.gold:before {
+    background-image: url("images/achievements/gold.svg");
+}
+
+.silver:before {
+    background-image: url("images/achievements/silver.svg");
+}
+
+.bronze:before {
+    background-image: url("images/achievements/bronze.svg");
+}
+
+.honor:before {
+    background-image: url("images/achievements/honor.svg");
+}
+
+.seal:before {
+    background-image: url("images/achievements/seal.svg");
+}
+
+/* || Qualifications dropdown grid */
+
+.qualifications_grid {
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(200px, auto);
+    gap: 30px;
+}
+
+.qualifications_grid > div {
+    border: 3px solid black;
+}
+
+@media (max-width: 700px) {
+    .qualifications_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dropdown_button {
+    width: 100%;
+    height: 2em;
+    border: none;
+    background-color: teal;
+    position: relative;
+}
+
+.dropdown_button {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.dropdown_button::after {
+    font-family: "Font Awesome 5 Free";
+    content: " \f107";
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    right: 1rem;
+}
+
+.dropdown_button:hover {
+    background-color: silver;
+    cursor: pointer;
+}
+
+.dropdown_content {
+    display: flex;
+    padding: 30px;
+    overflow: auto;
+    text-align: center;
+}
+
+.dropdown_content div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_content ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2.5em;
+    text-align: left;
+    list-style-type: "\27A4  ";
+}
+
+/* || Hidden */
+
+.hidden {
+    display:none;
+}
+
+/* || Images */
+
+.prof_picture {
+    min-width: 200px;
+    max-width: 500px;
+    width: 40vw;
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+.hobbies_picture {
+    min-width: 200px;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.achiev_picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.qualifications_picture {
+    min-width: 75px;
+    max-width: 100%;
+    max-height: 190px;
+}
+
+/* || Acessibility feature || */
+
+@media (prefers-reduced-motion) {
+    nav > ul {
+        transition: none;
+    }
+
+    .flip_card {
+        transition: none;
+    }
+}
